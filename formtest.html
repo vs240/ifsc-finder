@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="red">
+	<button onclick="db()">Submit</button>
+	<script>
+		function db(){
+			var x="https://ifsc.razorpay.com/";
+			var y=document.getElementById("red").value;
+			fetch(x+y)
+.then((apidata)=>{
+	console.log(apidata);
+	return apidata.json();
+})
+.then((actualdata)=>{
+	console.log(actualdata);
+	document.getElementById("address").innerHTML=actualdata.ADDRESS;
+	document.getElementById("bname").innerHTML=actualdata.BANK;
+	document.getElementById("bankcode").innerHTML=actualdata.BANKCODE;
+	document.getElementById("branch").innerHTML=actualdata.BRANCH;
+	document.getElementById("center").innerHTML=actualdata.CENTER;
+	document.getElementById("city").innerHTML=actualdata.CITY;
+	document.getElementById("state").innerHTML=actualdata.STATE;
+	document.getElementById("contact").innerHTML=actualdata.CONTACT;
+})
+}
+	</script>
+	<p id="address"></p><br>
+	<p id="bname"></p><br>
+	<p id="bankcode"></p><br>
+	<p id="branch"></p><br>
+	<p id="center"></p><br>
+	<p id="city"></p><br>
+	<p id="contact"></p><br>
+	<p id="state"></p><br>
+</body>
+</html>
